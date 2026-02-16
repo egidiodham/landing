@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tending Your Ecosystem | Executive Leadership Program</title>
+  <style>
+    :root {
+      --primary: #170F83;
+      --accent: #D6A2F9;
+      --secondary-accent: #8DF1BF;
+      --highlight: #F5F289;
+      --cta-accent: #FFE500;
+      --emotional-accent: #CE1369;
+      --bg-light: #FFFFFF;
+      --bg-soft: #EFEDE6;
+      --text: #1F1F1F;
+      --radius-sm: 16px;
+      --radius-lg: 24px;
+      --container: 1200px;
+      --space-1: 0.5rem;
+      --space-2: 1rem;
+      --space-3: 1.5rem;
+      --space-4: 2rem;
+      --space-5: 3rem;
+      --space-6: 4.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg-light);
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: var(--space-6) 0;
+      position: relative;
+    }
+
+    .section--soft { background: var(--bg-soft); }
+
+    h1, h2, h3 {
+      margin: 0 0 var(--space-3);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+    h2 { font-size: clamp(1.6rem, 2.7vw, 2.4rem); }
+    h3 { font-size: clamp(1.25rem, 2vw, 1.4rem); }
+
+    p { margin: 0 0 var(--space-3); }
+
+    .headline-emphasis {
+      font-family: "Marek Slab", Helvetica, Arial, sans-serif;
+      padding-inline: 0.25em;
+      border-radius: 0.5em;
+      display: inline-block;
+      background: var(--highlight);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--accent);
+      border-radius: 999px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+    }
+
+    .hero {
+      background: var(--bg-soft);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: var(--space-4);
+      align-items: center;
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .hero-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-3) 0 var(--space-4);
+      padding: 0;
+      list-style: none;
+    }
+
+    .pill {
+      background: var(--secondary-accent);
+      border-radius: 999px;
+      padding: 0.5rem 0.9rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-block;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      padding: 0.85rem 1.4rem;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--cta-accent);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn:focus-visible,
+    input:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .btn--primary {
+      background: var(--cta-accent);
+      color: var(--text);
+    }
+
+    .btn--block { width: 100%; }
+
+    .rounded-shape {
+      aspect-ratio: 1 / 1;
+      border-radius: 40% 60% 58% 42% / 44% 41% 59% 56%;
+      background: var(--primary);
+      position: relative;
+      padding: var(--space-4);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      min-height: 260px;
+    }
+
+    .divider {
+      width: 90px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--emotional-accent);
+      margin: 0 0 var(--space-4);
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cards-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      border-radius: var(--radius-sm);
+      padding: var(--space-3);
+      background: var(--bg-light);
+    }
+
+    .card--accent { background: var(--accent); }
+    .card--mint { background: var(--secondary-accent); }
+    .card--soft { background: var(--bg-soft); }
+
+    .modules {
+      display: grid;
+      gap: var(--space-3);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .module {
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      padding: var(--space-3);
+      border-left: 10px solid var(--primary);
+    }
+
+    .instructor {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: var(--space-4);
+      align-items: stretch;
+    }
+
+    .image-placeholder {
+      border-radius: var(--radius-lg);
+      background: var(--primary);
+      color: #fff;
+      min-height: 300px;
+      padding: var(--space-4);
+      display: flex;
+      align-items: flex-end;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
+    .pricing-card {
+      border-radius: var(--radius-lg);
+      background: var(--cta-accent);
+      padding: var(--space-4);
+      display: grid;
+      gap: var(--space-2);
+      justify-items: start;
+    }
+
+    form {
+      background: var(--bg-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: var(--space-2);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-bottom: var(--space-3);
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .field { display: flex; flex-direction: column; }
+
+    input {
+      font: inherit;
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 0.7rem 0.8rem;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .small {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    footer {
+      padding: var(--space-4) 0 var(--space-5);
+      font-size: 0.9rem;
+      text-align: center;
+      background: var(--bg-soft);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .instructor,
+      .modules,
+      .cards-4,
+      .cards-3 { grid-template-columns: 1fr 1fr; }
+
+      .instructor .image-placeholder { min-height: 220px; }
+    }
+
+    @media (max-width: 680px) {
+      .section { padding: var(--space-5) 0; }
+      .hero-grid,
+      .modules,
+      .instructor,
+      .cards-4,
+      .cards-3,
+      .form-grid { grid-template-columns: 1fr; }
+
+      .hero-card,
+      form,
+      .pricing-card { padding: var(--space-3); }
+
+      .price { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="section hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <span class="tag">Executive Leadership Program</span>
+        <h1>
+          Tending Your Ecosystem:
+          Leadership for <span class="headline-emphasis">Well-Being</span>
+          and Resilience in Disruptive Times
+        </h1>
+        <p>
+          Build a practical leadership framework that strengthens team well-being,
+          improves adaptability, and helps your organization navigate complexity with confidence.
+        </p>
+        <ul class="hero-meta" aria-label="Program highlights">
+          <li class="pill">Instructor: Kristine Baltaca</li>
+          <li class="pill">Format: Live + Applied Learning</li>
+          <li class="pill">Level: Executive</li>
+        </ul>
+        <a class="btn btn--primary" href="#enroll">Enroll Now</a>
+      </div>
+      <aside class="hero-card" aria-label="Program pricing and call to action">
+        <p class="price">300€</p>
+        <p>Single enrollment fee with direct payment through Revolut.</p>
+        <a class="btn" href="#enroll">Reserve Your Spot</a>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" aria-labelledby="about-program">
+      <div class="container">
+        <div class="divider" aria-hidden="true"></div>
+        <h2 id="about-program">About the Program</h2>
+        <p>
+          Ecosystem leadership is the ability to see your team, organization, and environment as an interconnected whole.
+          This program equips leaders to guide people-centered systems through uncertainty while preserving performance and trust.
+        </p>
+        <div class="grid cards-3">
+          <article class="card card--soft">
+            <h3>Well-Being as Strategy</h3>
+            <p>Move from reactive burnout management to proactive leadership habits that sustain energy and focus.</p>
+          </article>
+          <article class="card card--soft">
+            <h3>Resilience in Action</h3>
+            <p>Develop practical routines that increase individual and collective resilience in high-change environments.</p>
+          </article>
+          <article class="card card--soft">
+            <h3>Navigating Disruption</h3>
+            <p>Lead decisively during disruption with tools for sense-making, communication, and adaptive decision-making.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" aria-labelledby="learning-outcomes">
+      <div class="container">
+        <h2 id="learning-outcomes">Learning Outcomes</h2>
+        <div class="grid cards-4">
+          <article class="card card--mint"><h3>Map leadership ecosystems</h3><p>Identify leverage points across teams and stakeholders.</p></article>
+          <article class="card card--mint"><h3>Strengthen team resilience</h3><p>Apply routines that improve emotional and operational stability.</p></article>
+          <article class="card card--mint"><h3>Design well-being rituals</h3><p>Create practical structures that support healthy performance.</p></article>
+          <article class="card card--mint"><h3>Lead through uncertainty</h3><p>Make clear, values-based decisions during rapid change.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="modules">
+      <div class="container">
+        <h2 id="modules">Program Modules</h2>
+        <div class="modules">
+          <article class="module">
+            <h3>Module 1: Systems Awareness</h3>
+            <p>Understand ecosystem dynamics, stress signals, and hidden dependencies inside leadership contexts.</p>
+          </article>
+          <article class="module">
+            <h3>Module 2: Leadership and Well-Being</h3>
+            <p>Translate well-being science into practical leadership behaviors that scale across teams.</p>
+          </article>
+          <article class="module">
+            <h3>Module 3: Adaptive Resilience</h3>
+            <p>Develop recovery, reflection, and response practices that sustain momentum in disruption.</p>
+          </article>
+          <article class="module">
+            <h3>Module 4: Integration and Action Plan</h3>
+            <p>Build your personal ecosystem leadership roadmap with measurable outcomes and next steps.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" aria-labelledby="who-for">
+      <div class="container">
+        <h2 id="who-for">Who Is This For</h2>
+        <div class="grid cards-4">
+          <article class="card card--accent"><h3>Leaders</h3><p>Senior decision-makers shaping culture and strategic direction.</p></article>
+          <article class="card card--accent"><h3>Managers</h3><p>People leaders balancing performance with sustainable execution.</p></article>
+          <article class="card card--accent"><h3>Coaches</h3><p>Practitioners supporting growth, behavior change, and transformation.</p></article>
+          <article class="card card--accent"><h3>HR Professionals</h3><p>Talent and culture experts enabling resilient organizations.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="instructor">
+      <div class="container instructor">
+        <div class="image-placeholder" role="img" aria-label="Portrait placeholder for leadership coach Kristine Baltaca">
+          Kristine Baltaca<br />Leadership Coach
+        </div>
+        <article>
+          <h2 id="instructor">About the Instructor</h2>
+          <p>
+            Kristine Baltaca is a leadership coach who helps executives and teams build resilient, high-trust cultures.
+            Her work bridges strategic leadership, well-being science, and practical tools for navigating disruption.
+          </p>
+          <p>
+            Through this program, Kristine guides participants to lead with clarity, strengthen human systems,
+            and sustain meaningful impact during periods of rapid change.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--soft" aria-labelledby="pricing">
+      <div class="container">
+        <h2 id="pricing">Pricing</h2>
+        <article class="pricing-card" aria-label="Pricing card">
+          <p class="price">300€</p>
+          <p>Complete executive program access including all modules and implementation resources.</p>
+          <a href="#enroll" class="btn">Enroll Now</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="enroll" aria-labelledby="enrollment-form">
+      <div class="container">
+        <h2 id="enrollment-form">Enrollment Form</h2>
+        <p>Complete your details and continue to secure payment through Revolut.</p>
+        <form action="https://pay.revolut.com/example" method="get">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" autocomplete="organization" required />
+            </div>
+            <div class="field">
+              <label for="role">Role</label>
+              <input id="role" name="role" type="text" autocomplete="organization-title" required />
+            </div>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit">Proceed to Revolut Payment</button>
+          <p class="small">By submitting this form, you will be redirected to Revolut: https://pay.revolut.com/example</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Tending Your Ecosystem — Leadership for Well-Being and Resilience in Disruptive Times · Delivered by Kristine Baltaca
+    </div>
+  </footer>
+</body>
+</html>
